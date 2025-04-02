@@ -4,6 +4,13 @@ from ocr_processor import extract_text_from_image
 
 app = Flask(__name__)
 
+@app.route('/')
+def home():
+    return "Backend está funcionando!"
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8080)  # Certifique-se de que usa 0.0.0.0 e uma porta válida
+
 @app.route("/get-prices", methods=["GET"])
 def get_prices():
     data = scrape_prices_from_site()
