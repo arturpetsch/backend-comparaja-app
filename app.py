@@ -11,17 +11,22 @@ def home():
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)  # Certifique-se de que usa 0.0.0.0 e uma porta válida
 
+from flask import Flask, jsonify
+
+app = Flask(__name__)
+
 @app.route('/get-prices', methods=['GET'])
 def get_prices():
-    try:
-        with open('prices.json', 'r') as file:
-            data = json.load(file)
-        return jsonify(data)
-    except Exception as e:
-        return jsonify({"error": f"Erro ao obter preços: {str(e)}"}), 500
+    # Exemplo de retorno de preços simulados
+    prices = [
+        {"name": "Produto 1", "price": 10.99},
+        {"name": "Produto 2", "price": 20.49},
+        {"name": "Produto 3", "price": 5.99}
+    ]
+    return jsonify(prices)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080, use_reloader=False)
+    app.run(host='0.0.0.0', port=8080)
 
 
 @app.route("/process-image", methods=["POST"])
