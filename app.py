@@ -3,6 +3,7 @@ from web_scraper import scrape_prices_from_site
 from ocr_processor import extract_text_from_image
 
 app = Flask(__name__)
+app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
 @app.route('/')
 def home():
