@@ -26,8 +26,7 @@ def get_prices():
     ]
     return jsonify(prices)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+
 
 
 @app.route("/process-image", methods=["POST"])
